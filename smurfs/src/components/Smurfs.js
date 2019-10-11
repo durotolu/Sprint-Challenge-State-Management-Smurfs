@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../state/actionCreators';
 
 export function Smurfs(props) {
+    console.log(props.smurfs)
+    debugger
     useEffect(() => {
         props.getSmurfs()
     }, [])

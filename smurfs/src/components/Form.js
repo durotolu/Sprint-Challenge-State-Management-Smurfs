@@ -7,8 +7,10 @@ export function Form(props) {
         props.changeInput(event.target)
     }
 
-    const onSubmit = event => {
-        props.addSmurfData(event.target)
+    const onSubmit = (event) => {
+        event.preventDefault();
+        props.addSmurfData(props.form);
+        //props.form.name = '';
     }
 
     const isDisabled = () => {

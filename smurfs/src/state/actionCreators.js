@@ -7,7 +7,6 @@ export const getSmurfs = () => dispatch => {
     debugger
     axios.get(smurfsApi)
         .then(res => {
-            debugger
             let smurfs = res.data;
             dispatch({ type: types.ADD_TO_SMURFS, payload: smurfs })
         })
@@ -27,19 +26,21 @@ export function changeInput(target) {
     }
 }
 
-export function addSmurfData(target) {
-    const formToPost = {
-        name: target[0].value,
-        age: target[1].value,
-        height: target[2].value
+export const addSmurfData = (smurf) => dispatch => {
+    debugger
+    const newSmurf = {
+        name: smurf.name,
+        age: smurf.age,
+        height: smurf.height,
     }
 
-    axios.post(smurfsApi, formToPost)
+    axios.post(smurfsApi, newSmurf)
         .then(res => {
-            console.log(res);
-            debugger
+            dispatch({ type: types.ADD_TO_SMURFS, payload: res.data })
+            console.log(res.data)
         })
         .catch(err => {
             debugger
+            dispatch({ type: types.ERROR_MESSAGE, payload: err.message })
         })
 }

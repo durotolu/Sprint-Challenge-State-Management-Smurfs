@@ -2,9 +2,10 @@ import * as types from './actionTypes';
 
 const initialSmurf = [];
 export function smurfReducer(smurf = initialSmurf, action) {
+    debugger
     switch (action.type) {
         case types.ADD_TO_SMURFS:
-            return action.payload
+            return action.payload;
         case types.ERROR_MESSAGE:
             return action.payload;
         default:
